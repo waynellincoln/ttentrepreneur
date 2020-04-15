@@ -18,5 +18,11 @@
  Create Main Links for front end - links obtained from categories table (cat_title field) 
  
     **PHP to be used on the navigation.php page
+    
+ Create post table
+ 
+ Added static data in posts table
+ 
+ Add PHP code to index.php page to let the posts displayed on the home page get their data from the posts table
  
  
