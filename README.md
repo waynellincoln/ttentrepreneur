@@ -13,4 +13,6 @@
  
  Create includes folder in ttentrepreneur folder - to store db.php file
  
+ Make index.php files reusable i.e. 
+ 
  
