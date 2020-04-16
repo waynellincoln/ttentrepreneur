@@ -29,4 +29,18 @@
  
  Admin - cut up code to make it easier to use
  
+ Organize the navigation links on admin/index.php to suit my needs
+ 
+ Create admin/categories.php file.
+ 
+ Copy all code from admin/index.php to the categories.php file
+ 
+ Create form on categories page to add categories to database
+ 
+ Create table on categories page to display category records from database
+ 
+ Create query to display category records
+ 
+ Create query to insert categories into database
+ 
  
