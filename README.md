@@ -23,6 +23,6 @@
  
  Added static data in posts table
  
- Add PHP code to index.php page to let the posts displayed on the home page get their data from the posts table
+ Create a custom working search bar - create form around html search code to send data to be processed in data base. Changes made to sidebar.php page
  
  
