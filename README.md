@@ -23,6 +23,10 @@
  
  Added static data in posts table
  
- Create a custom working search bar - create form around html search code to send data to be processed in data base. Changes made to sidebar.php page
+ Create a custom working search bar - create form around html search code to send data to be processed in data base. Code processed in new file - search.php
+ 
+ Populate the categories list in the sidebar from the categories table
+ 
+ Admin - cut up code to make it easier to use
  
  
