@@ -47,8 +47,7 @@
                                }
      
                            }
-
-                           
+ 
                         }
                          
                     ?>
@@ -70,7 +69,7 @@
                        
                  <!-- Create Table Using 1/2 page to display data from database--> 
                   <div class="col-xs-6">
-                    
+                    <!-- Query to Display Categories in table -->   
                     <?php
                         $query = "SELECT * 
                                   FROM categories";
@@ -82,8 +81,9 @@
                  <table class="table table-bordered table-hover">
                      <thead>
                          <tr>
-                             <th>ID</th>;
-                             <th>Category</th>;  
+                             <th>ID</th>
+                             <th>Category</th>    
+                             <th>Delete</th>    
                          </tr>
                      </thead>
                          
@@ -99,6 +99,7 @@
                              echo "<tr>";    
                                echo "<td>{$cat_id}</td>";
                                echo "<td>{$cat_title}</td>";
+                               echo "<td><a href='categories.php?delete=$cat_id'>Delete<a/></td>"; 
                              echo "</tr>";
                                  
                              }
@@ -108,6 +109,27 @@
                          </tbody>
                      </table>
                   </div> 
+                      
+                  <!-- Delete Query to Remove Categories -->
+                  <?php
+                      
+                        if (isset($_GET['delete'])) {
+                        
+                            $delete_cat = $_GET['delete'];
+                            
+                        $query = "DELETE FROM categories
+                                  WHERE cat_id = {$delete_cat}"; 
+                        
+                        $delete_category_query = mysqli_query($con, $query);
+                            
+                        header("Location: categories.php");
+                            
+                      }
+                      
+                  ?> 
+                           
+                      
+                      
                        
                     </div>
                 </div>

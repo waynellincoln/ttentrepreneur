@@ -1,3 +1,5 @@
+<?php ob_start(); ?> <!-- Useful for working with headers for redirecting data -->
+
 <?php include "../includes/db.php" ?>
 
 

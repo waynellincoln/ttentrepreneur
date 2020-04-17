@@ -44,3 +44,5 @@
  Create query to insert categories into database
  
  
+ 
+ 
