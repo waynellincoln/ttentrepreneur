@@ -52,6 +52,7 @@
                          
                     ?>
                     
+                    <!-- Form for Adding Category -->
                      <form action="" method="post">
                         <div class="form-group">
                             <label for="cat_title">Add Category</label>
@@ -61,8 +62,28 @@
                         <div class="form-group"> 
                             <input class="btn btn-primary" type="submit" name="submit" value="Add Category"> 
                         </div>
-                        
                      </form>
+                     
+                     
+                     
+                     <!-- Form for Editing Category - send in an include - update form loads only when edit clicked-->
+             <form action="" method="post">
+             
+                 <?php
+                    
+                    if (isset($_GET['edit'])) {
+                        
+                        include("includes/update_categories.php");
+                    }
+                 
+                 ?>
+   
+             </form>
+                     
+                     
+                  
+                     
+                     
                  </div>  
                       
                       
@@ -84,6 +105,7 @@
                              <th>ID</th>
                              <th>Category</th>    
                              <th>Delete</th>    
+                             <th>Edit</th>    
                          </tr>
                      </thead>
                          
@@ -100,6 +122,7 @@
                                echo "<td>{$cat_id}</td>";
                                echo "<td>{$cat_title}</td>";
                                echo "<td><a href='categories.php?delete=$cat_id'>Delete<a/></td>"; 
+                               echo "<td><a href='categories.php?edit=$cat_id'>Edit<a/></td>"; 
                              echo "</tr>";
                                  
                              }
@@ -127,10 +150,7 @@
                       }
                       
                   ?> 
-                           
-                      
-                      
-                       
+                   
                     </div>
                 </div>
                 <!-- /.row -->
