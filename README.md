@@ -43,6 +43,28 @@
  
  Create query to insert categories into database
  
+ Create query to delete records from category table
+ 
+ Create query to update records in category table
+ 
+ Refactor code used in category queries by creating functions
+ 
+ Creating table to display all posts
+ 
+ Creating query and displaying all posts
+ 
+ Creating code to display images in posts
+ 
+ Making switch statement to bring in various code to display, delete, edit posts. All code displayed in 1 and same page.
+ 
+ Create query to send data, including images, into post table in database
+ 
+ Deleting posts - adding links to view_all_posts.php and creating query to delete posts.
+ 
+ 
+ 
+ 
+ 
  
  
  

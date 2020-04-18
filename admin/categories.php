@@ -15,7 +15,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             ttEntrepreneur Admin
-                            <small>Subheading</small>
+                            <small>Categories - Adding and Updating</small>
                         </h1>
                         
                 <!-- Main Content Area Starts -->         
