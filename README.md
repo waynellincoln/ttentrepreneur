@@ -63,7 +63,7 @@
  
  Editing posts - create edit_post.php page; put link on view_all_posts.php page to edit records; display edit records on page; Editing Images; Obtaining category_id dynamically by linking via code to display all the categories from the categories table; Create code to update the form; Special attention to updating images
  
- 
+ Relating categories to posts on the posts table - Showing category names in the post.php page
  
  
  
