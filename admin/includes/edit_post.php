@@ -1,7 +1,6 @@
 <?php
     //query to display posts to be edited
-    if (isset($_GET['edit']) ) {
-        
+    if (isset($_GET['edit'])) {
         
         $edit_post_id = $_GET['edit'];
         
@@ -62,10 +61,10 @@
          
                     $update_post_query = mysqli_query($con, $query);
                     
-                    if (!$update_post_query) {
-                        
-                        die("QUERY FAILED " . mysqli_error($con));
-                    }
+                        if (!$update_post_query) {
+
+                            die("QUERY FAILED " . mysqli_error($con));
+                        }
         
                     //code to manage image display
                     if (empty($post_image)) {

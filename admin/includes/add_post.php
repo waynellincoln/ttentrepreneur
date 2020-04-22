@@ -4,7 +4,7 @@
     if (isset($_POST['create_post'])) {
         
         $post_title                 = $_POST['post_title'];
-        $post_category_id           = $_POST['post_category_id'];
+        $post_category_id           = $_POST['post_category']; //sending in category id but displaying category title
         $post_author                = $_POST['post_author'];
         $post_status                = $_POST['post_status'];
         
@@ -22,20 +22,36 @@
         move_uploaded_file($post_image_temp, "../images/$post_image");
         
         //query to load data into the database
-        $query = "INSERT INTO posts (post_title, post_category_id, post_author, post_status, post_image,       
-                              post_tags, post_content, post_date, post_comment_count)
-                  VALUES('{$post_title}', {$post_category_id}, '{$post_author}', '{$post_status}', '{$post_image}',
-                         '{$post_tags}', '{$post_content}', now(), {$post_comment_count})";
+        $query = "INSERT INTO posts
+                    (post_category_id, 
+                    post_title, 
+                    post_author, 
+                    post_date, 
+                    post_image, 
+                    post_content, 
+                    post_tags, 
+                    post_status, 
+                    post_comment_count) ";
+        
+        $query .= "VALUES
+                    ({$post_category_id}, 
+                    '{$post_title}', 
+                    '{$post_author}', 
+                      now(), 
+                    '{$post_image}', 
+                    '{$post_content}', 
+                    '{$post_tags}', 
+                    '{$post_status}',
+                    '{$post_comment_count}' ) ";
         
         $insert_post_into_database = mysqli_query($con, $query);
         
         if (!$insert_post_into_database) {
             
-            die("QUERY FAILED" . mysqli_error($con));
+            die("QUERY FAILED " . mysqli_error($con));
             
         }
            
-   
     }
 
 
@@ -49,10 +65,32 @@
         <input class="form-control" type="text" name="post_title" >
     </div>
     
+    
+    
     <div class="form-group">
-        <label for="post_category_id">Post Category</label>
-        <input type="text" class="form-control" name="post_category_id">
+        <label for="post_category_id">Post Category</label><br>
+        <select name="post_category" id="post_category_id">      <!--Sending in post_category ....-->
+            <?php
+                $query = "SELECT *
+                          FROM categories";
+            
+                $post_category_id = mysqli_query($con, $query);
+            
+                while ($row = mysqli_fetch_assoc($post_category_id)) {
+                    
+                    $cat_id             = $row['cat_id'];
+                    $cat_title          = $row['cat_title'];
+                    
+                echo "<option value='$cat_id'>$cat_title</option>";   //but displaying the category name
+                    
+              }
+            
+            ?>
+            
+        </select>
     </div>
+    
+    
     
     <div class="form-group">
         <label for="post_author">Author</label>
