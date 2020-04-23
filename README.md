@@ -65,6 +65,12 @@
  
  Admin - Relating categories to posts on the posts table - Showing category names in the post.php page
  
+ Creating individual post page
+ 
+ Creating category page
+ 
+ Making an Excerpt
+ 
  
  
  
