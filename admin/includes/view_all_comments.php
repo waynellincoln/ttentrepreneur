@@ -59,11 +59,9 @@
                 }
                 
                    echo"<td>{$comment_date}</td>";
-                   echo"<td><a href='comments.php?source=edit_comment&edit='>Approve</a></td>"; 
-                   echo"<td><a href='comments.php?source=edit_comment&edit='>Unapprove</a></td>";   
+                   echo"<td><a href='comments.php?approve=$comment_id'>Approve</a></td>"; 
+                   echo"<td><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";   
                    echo"<td><a href='comments.php?delete=$comment_id'>Delete</a></td>";
-                   
-                   
                 echo "</tr>";
 
               }
@@ -72,8 +70,49 @@
 
     </tbody>
 </table>
+ 
+ 
 
-               
+ <!-- Management of approvals --> <!-- Management of approvals --><!-- Management of approvals --> 
+ 
+ <?php
+
+    if (isset($_GET['unapprove'])) {
+        
+        $comment_id_to_unapprove  = $_GET['unapprove'];
+        
+        $query = "UPDATE comments
+                  SET comment_status = 'Unapproved' 
+                  WHERE comment_id = $comment_id_to_unapprove";
+        
+        $unapprove_comment_query = mysqli_query($con, $query);
+        
+        header("Location: comments.php");
+        
+    }
+
+            
+
+    if (isset($_GET['approve'])) {
+        
+        $comment_id_to_approve  = $_GET['approve'];
+        
+        $query = "UPDATE comments
+                  SET comment_status = 'Approved' 
+                  WHERE comment_id = $comment_id_to_approve";
+        
+        $approve_comment_query = mysqli_query($con, $query);
+        
+        header("Location: comments.php");
+    }
+
+?>                                      
+                                        
+                                                         
+                                                                       
+                                                                                     
+ <!-- Delete Query --> <!-- Delete Query --><!-- Delete Query -->  <!-- Delete Query --> <!-- Delete Query --> 
+                                                                                                               
 <?php
 
     if (isset($_GET['delete'])) {
@@ -90,11 +129,15 @@
         
     }
 
-
-
-
-
-
-
 ?>
+               
+
+                
+               
+               
+               
+               
+               
+               
+               
                 

@@ -79,6 +79,15 @@
  
  Relating Comments to Posts
  
+ Admin - Deleting Comments
+ 
+ Approve and Unapprove comments
+ 
+ Display comments based on approval
+ 
+ 
+
+ 
  
  
  

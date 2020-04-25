@@ -66,7 +66,7 @@
                  ?>
                  
                  
-                <!-- Blog Comments --> 
+                <!-- Blog Comments --> <!-- Blog Comments --><!-- Blog Comments --><!-- Blog Comments -->
 
                 <!-- Query to Inssert Contents from Comment into Table named comments --> 
                 <?php
@@ -97,7 +97,8 @@
                 ?>
    
                
-                <!-- Comments Form -->
+                <!-- Comments Form - Comments Going to Database--><!-- Comments Form - Comments Going to Database-->
+                
                 <div class="well">
                     <h4>Leave a Comment:</h4>
                     <form role="form" action="" method="post">
@@ -119,8 +120,30 @@
 
                
                 <hr>
+                
 
-                <!-- Posted Comments -->
+                <!-- Posted CommentsFrom Database --><!-- Posted Comments From Database -->
+                
+                
+                <?php
+                    $query = "SELECT * 
+                              FROM comments 
+                              WHERE comment_post_id = $p_id 
+                              AND comment_status = 'Approved' 
+                              ORDER BY comment_id DESC ";
+                
+                    $approved_comments_query = mysqli_query($con, $query);
+                
+                    while ($row = mysqli_fetch_assoc($approved_comments_query)) {
+                        
+                        $comment_id                 = $row['comment_id'];
+                        $comment_author             = $row['comment_author'];
+                        $comment_content            = $row['comment_content'];
+                        $comment_status             = $row['comment_status'];
+                        $comment_post_id            = $row['comment_post_id'];
+                        $comment_date               = $row['comment_date'];
+                           
+                ?>
 
                 <!-- Comment -->
                 <div class="media">
@@ -128,53 +151,22 @@
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
+                        <h4 class="media-heading"><?php echo $comment_author; ?>
+                            <small><?php echo $comment_date; ?></small>
                         </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </div>
-
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        <!-- Nested Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        <!-- End Nested Comment -->
+                       <?php echo $comment_content; ?>
                     </div>
                 </div>
  
+              <?php } ?>
+          
                  
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                
+           
             </div>
             
 
-        <!-- Blog Sidebar Widgets Column -->
-  <?php include "includes/sidebar.php" ; ?>            
+            <!-- Blog Sidebar Widgets Column -->
+          <?php include "includes/sidebar.php" ; ?>            
             
 
         </div>
