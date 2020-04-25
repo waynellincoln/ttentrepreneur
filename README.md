@@ -71,6 +71,14 @@
  
  Making an Excerpt
  
+ Comments - Creating comments table; creating comments page; 
+ 
+ Comments - Admin - Query to display comments in admin
+ 
+ Comments - Front end - Query to move comments to database
+ 
+ Relating Comments to Posts
+ 
  
  
  

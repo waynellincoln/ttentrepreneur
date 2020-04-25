@@ -37,27 +37,27 @@
                 echo "<tr>";
                    echo"<td>{$comment_id}</td>";
                    echo"<td>{$comment_author}</td>";
-                
-                //to display chosen category in the post table.
-//                $query = "SELECT * 
-//                          FROM categories
-//                          WHERE cat_id = {$post_category_id}";
-//                
-//                $display_category_query = mysqli_query($con, $query);
-//                
-//                while ($row = mysqli_fetch_assoc($display_category_query)) {
-//                    
-//                    $cat_id     = $row['cat_id'];
-//                    $cat_title  = $row['cat_title'];
-//                    
-//                    echo"<td>{$cat_title}</td>";
-//                    
-//                }
-                
                    echo"<td>{$comment_email}</td>";
                    echo"<td>{$comment_content}</td>";
                    echo"<td>{$comment_status}</td>";
-                   echo"<td>Some Title</td>"; 
+                
+                
+                //to display chosen post title in the comment table.
+                $query = "SELECT * 
+                          FROM posts
+                          WHERE post_id = {$comment_post_id}";
+                
+                $display_post_query = mysqli_query($con, $query);
+                
+                while ($row = mysqli_fetch_assoc($display_post_query)) {
+                    
+                    $post_id     = $row['post_id'];
+                    $post_title  = $row['post_title'];
+                    
+                    echo"<td><a href='../post.php?p_id=$post_id'>{$post_title}</a></td>";
+                    
+                }
+                
                    echo"<td>{$comment_date}</td>";
                    echo"<td><a href='comments.php?source=edit_comment&edit='>Approve</a></td>"; 
                    echo"<td><a href='comments.php?source=edit_comment&edit='>Unapprove</a></td>";   
