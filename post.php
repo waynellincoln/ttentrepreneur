@@ -68,7 +68,7 @@
                  
                 <!-- Blog Comments --> <!-- Blog Comments --><!-- Blog Comments --><!-- Blog Comments -->
 
-                <!-- Query to Inssert Contents from Comment into Table named comments --> 
+                <!-- Query to Insert Contents from Comment into Table named comments --> 
                 <?php
 
                 if (isset($_POST['create_comment'])) {
@@ -92,6 +92,19 @@
                     die("QUERY FAILED " . mysqli_error($con));
                 }
 
+                    
+                 
+                //Query to find amount of comments associated with each post by adding 1 to each additional comment
+                $query = "UPDATE posts
+                          SET post_comment_count = post_comment_count + 1 
+                          WHERE post_id = $p_id";
+                
+                $update_comment_count_query = mysqli_query ($con, $query);
+                    
+                    
+                    
+                    
+                    
                     }
 
                 ?>

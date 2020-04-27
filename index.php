@@ -25,7 +25,8 @@
                 <?php 
                 
                     $query = "SELECT *
-                              FROM posts";
+                              FROM posts
+                              WHERE post_status = 'published' ";
                 
                     $select_all_posts_query = mysqli_query($con, $query);
                 
@@ -37,6 +38,8 @@
                         $post_date          = $row['post_date'];
                         $post_image         = $row['post_image'];
                         $post_content       = substr($row['post_content'], 0, 100);
+                        $post_status        = $row['post_status'];
+
                         
                      //Break out PHP to accommodate looping through all the posts in database 
                     ?>
@@ -59,8 +62,8 @@
                     
                  <?php 
                     
-                    }
-                
+                  }  
+                                    
                  ?>
                 
             </div>

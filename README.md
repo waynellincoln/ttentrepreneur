@@ -85,6 +85,8 @@
  
  Display comments based on approval
  
+ Displaying number of comments for each post - adding 1 each time a new post is created
+ 
  
 
  

@@ -14,7 +14,7 @@
         $post_tags                  = $_POST['post_tags'];
         $post_content               = $_POST['post_content'];
         $post_date                  = date('d-m-y');
-    
+        $post_comment_count         = $_POST['post_comment_count'];
         
         
         //function for the images
@@ -30,8 +30,8 @@
                     post_image, 
                     post_content, 
                     post_tags, 
-                    post_status 
-                    ) ";
+                    post_status, 
+                    post_comment_count) ";
         
         $query .= "VALUES
                     ({$post_category_id}, 
@@ -41,8 +41,8 @@
                     '{$post_image}', 
                     '{$post_content}', 
                     '{$post_tags}', 
-                    '{$post_status}'
-                     ) " ;
+                    '{$post_status}',
+                    '{$post_comment_count}' ) ";
         
         $insert_post_into_database = mysqli_query($con, $query);
         
