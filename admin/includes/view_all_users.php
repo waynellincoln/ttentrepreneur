@@ -9,6 +9,8 @@
             <th>Email</th>
             <th>Role</th>
             <th>Date</th> 
+            <th>Admin</th> 
+            <th>Subscriber</th> 
             <th>Delete</th> 
         </tr>
     </thead>
@@ -61,8 +63,8 @@
                    echo"<td>{$user_role}</td>";
                    echo"<td>{$user_date}</td>";
                 
-//                   echo"<td><a href='comments.php?approve=$comment_id'>Approve</a></td>"; 
-//                   echo"<td><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";   
+                   echo"<td><a href='users.php?admin=$user_id'>Admin</a></td>"; 
+                   echo"<td><a href='users.php?subscriber=$user_id'>Subscriber</a></td>";   
                    echo"<td><a href='users.php?delete=$user_id'>Delete</a></td>";
                 echo "</tr>";
 
@@ -75,42 +77,42 @@
  
  
 
- <!-- Management of approvals --> <!-- Management of approvals --><!-- Management of approvals --> 
+ <!-- Management of admin/subscriber status --> <!-- Management of admin/subscriber status -->
  
-<!--
+
  <?php
 
-//    if (isset($_GET['unapprove'])) {
-//        
-//        $comment_id_to_unapprove  = $_GET['unapprove'];
-//        
-//        $query = "UPDATE comments
-//                  SET comment_status = 'Unapproved' 
-//                  WHERE comment_id = $comment_id_to_unapprove";
-//        
-//        $unapprove_comment_query = mysqli_query($con, $query);
-//        
-//        header("Location: comments.php");
+    if (isset($_GET['subscriber'])) {
         
-//    }
+        $user_id_to_make_subscriber  = $_GET['subscriber'];
+        
+        $query = "UPDATE users
+                  SET user_role = 'subscriber' 
+                  WHERE user_id = $user_id_to_make_subscriber";
+        
+        $make_role_subscriber_query = mysqli_query($con, $query);
+        
+        header("Location: users.php");
+        
+    }
 
             
 
-//    if (isset($_GET['approve'])) {
-//        
-//        $comment_id_to_approve  = $_GET['approve'];
-//        
-//        $query = "UPDATE comments
-//                  SET comment_status = 'Approved' 
-//                  WHERE comment_id = $comment_id_to_approve";
-//        
-//        $approve_comment_query = mysqli_query($con, $query);
-//        
-//        header("Location: comments.php");
-//    }
+    if (isset($_GET['admin'])) {
+        
+        $comment_id_to_make_admin  = $_GET['admin'];
+        
+        $query = "UPDATE users
+                  SET user_role = 'admin' 
+                  WHERE user_id = $comment_id_to_make_admin";
+        
+        $make_role_admin_query = mysqli_query($con, $query);
+        
+        header("Location: users.php");
+    }
 
 ?>                                      
--->
+
                                         
                                                          
                                                                        
