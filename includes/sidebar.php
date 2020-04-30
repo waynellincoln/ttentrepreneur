@@ -26,6 +26,36 @@
         
     </div>
 
+<!-- Login Form --><!-- Login Form --><!-- Login Form --><!-- Login Form --><!-- Login Form --><!-- Login Form -->
+    <div class="well">
+        <h4>Login</h4>
+         
+       <!-- Blog Form Needed to Submit Login Data to Database --> 
+       <form action="includes/login.php" method="post">
+        
+            <div class="form-group"> 
+                <input type="text" name="username" class="form-control" placeholder="Enter Username">
+            </div>
+            
+            <div class="input-group"> 
+                <input type="password" name="password" class="form-control" placeholder="Enter Password">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" name="login" type="submit">Submit</button>
+                </span>
+            </div>
+            
+        
+       </form> <!-- Login form -->
+        
+    </div>
+
+
+
+
+
+
+
+
   
     <!-- Blog Categories Well -->
     <div class="well">

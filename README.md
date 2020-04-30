@@ -87,6 +87,10 @@
  
  Displaying number of comments for each post - adding 1 each time a new post is created
  
+ Users - Adding user; editing users; deleting users; displaying users
+ 
+ Login - creation of login form; make login page; set sessions; use session to identify who is logged in; use session to allow only admin to login into system; logout page; 
+ 
  
 
  

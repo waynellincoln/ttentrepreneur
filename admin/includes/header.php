@@ -1,9 +1,21 @@
 <?php ob_start(); ?> <!-- Useful for working with headers for redirecting data -->
 
+<?php session_start(); ?>
+
 <?php include "../includes/db.php"; ?>
 
 <?php include "./functions.php" ;?>
 
+
+<?php
+    //Use session to allow only admin users to login in successfully into admin
+    if (!isset($_SESSION['role'])) {
+
+            header ("Location: ../index.php");
+            
+    }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
