@@ -27,7 +27,7 @@
         
         while ($row = mysqli_fetch_array($login_user_query)) {
             
-            $db_User_id             = $row['user_id'];
+            $db_user_id             = $row['user_id'];
             $db_username            = $row['username'];
             $db_user_password       = $row['user_password'];
             $db_user_firstname      = $row['user_firstname'];
