@@ -91,7 +91,9 @@
  
  Login - creation of login form; make login page; set sessions; use session to identify who is logged in; use session to allow only admin to login into system; logout page; 
  
+ Profile Page - create profile page; use sessions to manage updating of profile page; update profile page
  
+ Dashboard - Adding widgets; updating widgets with queries; Adding charts; Updating charts from google charts.
 
  
  
