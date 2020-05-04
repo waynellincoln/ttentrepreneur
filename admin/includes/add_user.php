@@ -19,6 +19,8 @@
         
         $insert_user_into_database = mysqli_query($con, $query);
         
+        echo "<p class=alert alert-primary role='alert'>New User Created: "  . " "  . "<a href='users.php'>View Users</a></p>";
+        
         if (!$insert_user_into_database) {
             
             die("QUERY FAILED " . mysqli_error($con));
