@@ -94,6 +94,10 @@
  Profile Page - create profile page; use sessions to manage updating of profile page; update profile page
  
  Dashboard - Adding widgets; updating widgets with queries; Adding charts; Updating charts from google charts.
+ 
+ WYSIWYG editor with CKEditor
+ 
+ 
 
  
  

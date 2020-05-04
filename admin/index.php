@@ -165,6 +165,18 @@
             </div><!-- /.row -->
             
             <!-- Code to count draft posts, unapproved comments, and subscribers to add to graph  -->
+            
+            <?php
+                $query = "SELECT *
+                          FROM posts
+                          WHERE post_status = 'published'";
+
+                $to_count_published_posts_for_dashboard = mysqli_query($con, $query);
+
+                $published_posts_count = mysqli_num_rows($to_count_published_posts_for_dashboard);
+
+            ?>
+            
             <?php
                
                 $query = "SELECT *
@@ -224,10 +236,10 @@
                             
                             <?php
                                 
-                                $element_areas = ['Posts', 'Draft Posts', 'Comments', 'Unapporved Comments', 'Users', 'Subscribers', 'Categories'];
-                                $element_count = [$posts_count, $draft_posts_count, $comments_count, $unapproved_comments_count, $users_count, $subscribers_count, $categories_count];
+                                $element_areas = ['All Posts', 'Active Posts', 'Draft Posts', 'Comments', 'Unapporved Comments', 'Users', 'Subscribers', 'Categories'];
+                                $element_count = [$posts_count, $published_posts_count, $draft_posts_count, $comments_count, $unapproved_comments_count, $users_count, $subscribers_count, $categories_count];
                             
-                                for ($i = 0; $i < 7; $i++) {
+                                for ($i = 0; $i < 8; $i++) {
                                     
                                     echo "['{$element_areas[$i]}'" . ", " . "{$element_count[$i]}],";
                                 }
