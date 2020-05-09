@@ -97,6 +97,14 @@
  
  WYSIWYG editor with CKEditor
  
+ Notification - post updated
+ 
+ Use of Sessions - limit access; display link;
+ 
+ Adding Bulk Options
+ 
+ 
+ 
  
 
  

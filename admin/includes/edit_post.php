@@ -66,6 +66,11 @@
                             die("QUERY FAILED " . mysqli_error($con));
                         }
         
+                        if ($update_post_query) {
+                            
+                            echo "<h4 class='bg-success text-center'>Your Post Has Been Updated<a href='../post.php?p_id={$edit_post_id}'>  View Post</a></h4>";
+                        }
+        
                     //code to manage image display
                     if (empty($post_image)) {
                         
