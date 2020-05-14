@@ -38,7 +38,7 @@
             </div>
             
             <div class="input-group"> 
-                <input type="password" name="password" class="form-control" placeholder="Enter Password">
+                <input type="password" name="user_password" class="form-control" placeholder="Enter Password">
                 <span class="input-group-btn">
                     <button class="btn btn-primary" name="login" type="submit">Submit</button>
                 </span>

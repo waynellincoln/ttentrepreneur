@@ -33,6 +33,8 @@
             
             ?>
                 <li><a href="admin/index.php">Admin</a></li>
+                
+                <li><a href="registration.php">Register</a></li>
 
             </ul>
             

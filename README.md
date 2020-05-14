@@ -103,9 +103,10 @@
  
  Adding Bulk Options
  
+ Small features - dropdown box while entering data in database; adding notification when post 
+ created; code for last row of query; displaying username on top navigation using sessions; stopping comments from being sent to database if all fields not filled (using javascript).
  
- 
- 
+ User Registration - Layout out form; create table; create login code; encrypt password; adjust login page after encryption; adjust edit user page after encryption
 
  
  

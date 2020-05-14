@@ -6,12 +6,12 @@
 
     if (isset($_POST['login'])) {
         
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $username       = $_POST['username'];
+        $user_password  = $_POST['user_password'];
     
         
-        $username = mysqli_escape_string($con, $username);
-        $password = mysqli_escape_string($con, $password);
+        $username       = mysqli_escape_string($con, $username);
+        $user_password  = mysqli_escape_string($con, $user_password);
         
         $query = "SELECT *
                   FROM users
@@ -38,9 +38,12 @@
             $db_user_date           = $row['user_date'];
         }
         
+            //to turn password back to a non-encrypted password
+            $user_password = crypt($user_password, $db_user_password);
+        
         //validation starts here    //validation starts here    //validation starts here
         //is username being typed by user the same as the one in the database
-        if ($username === $db_username && $password === $db_user_password) {
+        if ($username === $db_username && $user_password === $db_user_password) {
             
             //setting session here
             $_SESSION['username']   = $db_username;    //username from database is assigned a session called username

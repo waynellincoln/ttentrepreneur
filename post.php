@@ -73,39 +73,44 @@
 
                 if (isset($_POST['create_comment'])) {
 
-                $p_id                   = $_GET['p_id']; //p_id comes in when we clicked the Title in index page
+                    $p_id                   = $_GET['p_id']; //p_id comes in when we clicked the Title in index page
 
-                $comment_author         = $_POST['comment_author'];
-                $comment_email          = $_POST['comment_email'];
-                $comment_content        = $_POST['comment_content'];
+                    $comment_author         = $_POST['comment_author'];
+                    $comment_email          = $_POST['comment_email'];
+                    $comment_content        = $_POST['comment_content'];
 
 
+                    if(!empty($comment_author) && !empty($comment_email) && !empty($comment_content)) {
+                    
                 $query = "INSERT INTO comments(comment_post_id, comment_author, comment_email, comment_content,    
-                            comment_status, comment_date) 
-                          VALUES({$p_id}, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved',  
-                            now())";
+                        comment_status, comment_date) 
+                      VALUES({$p_id}, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved',  
+                        now())";
 
                 $insert_comment_query = mysqli_query($con, $query);
 
                 if (!$insert_comment_query) {
-                    
+
                     die("QUERY FAILED " . mysqli_error($con));
                 }
 
-                    
-                 
+
+
                 //Query to find amount of comments associated with each post by adding 1 to each additional comment
                 $query = "UPDATE posts
                           SET post_comment_count = post_comment_count + 1 
                           WHERE post_id = $p_id";
-                
+
                 $update_comment_count_query = mysqli_query ($con, $query);
-                    
-                    
-                    
-                    
-                    
-                    }
+
+
+                    } else {
+                         
+                        echo "<script>alert('Fields Cannot be Empty')</script>";
+                        
+                     }
+
+                }
 
                 ?>
    
@@ -135,7 +140,7 @@
                 <hr>
                 
 
-                <!-- Posted CommentsFrom Database --><!-- Posted Comments From Database -->
+                <!-- Posted Comments From Database --><!-- Posted Comments From Database -->
                 
                 
                 <?php

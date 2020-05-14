@@ -17,6 +17,7 @@
             $user_firstname             = $row['user_firstname'];
             $user_lastname              = $row['user_lastname'];
             $user_email                 = $row['user_email'];
+            $user_password              = $row['user_password'];
             $user_role                  = $row['user_role'];
             $user_date                  = $row['user_date'];
         
@@ -31,8 +32,27 @@
         $user_firstname             = $_POST['user_firstname'];
         $user_lastname              = $_POST['user_lastname'];
         $user_email                 = $_POST['user_email'];
+        $user_password              = $_POST['user_password'];
         $user_role                  = $_POST['user_role'];
         $user_date                  = date('d-m-y');
+        
+        //Query to remove encryption from password
+        $query = "SELECT randSalt
+                  FROM users";
+        
+        $remove_encryption_query = mysqli_query($con, $query);
+        
+        if (!$remove_encryption_query) {
+            
+            die("Query Failed " . mysqli_error($con));
+            
+        }
+        
+        $row    = mysqli_fetch_array($remove_encryption_query); //1 result so no need to use while loop
+        
+        $salt   = $row['randSalt'];
+        
+        $hashed_password = crypt($user_password, $salt);
         
         
                     $query = "UPDATE users 
@@ -40,6 +60,7 @@
                                   user_firstname      = '{$user_firstname}',
                                   user_lastname       = '{$user_lastname}',
                                   user_email          = '{$user_email}',
+                                  user_password       = '{$hashed_password}',
                                   user_role           = '{$user_role}',
                                   user_date           = '{$user_date}'
                               
@@ -84,6 +105,11 @@
     <div class="form-group">
         <label for="user_email">Email</label>
         <input type="email" class="form-control" name="user_email" value="<?php echo $user_email; ?>">
+    </div>
+    
+    <div class="form-group">
+        <label for="user_email">Password</label>
+        <input type="password" class="form-control" name="user_password" value="<?php echo $user_password; ?>">
     </div>
     
      <div class="form-group">

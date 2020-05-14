@@ -60,6 +60,11 @@
         <input type="email" class="form-control" name="user_email">
     </div>
     
+    <div class="form-group">
+        <label for="user_password">Password</label>
+        <input type="password" class="form-control" name="user_password">
+    </div>
+    
      <div class="form-group">
         <label for="user_role">Role</label><br>
         <select name="user_role" id="user_role">

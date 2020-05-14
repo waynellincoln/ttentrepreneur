@@ -46,10 +46,18 @@
         
         $insert_post_into_database = mysqli_query($con, $query);
         
+        $last_post_id = mysqli_insert_id($con); //to get id of last row in query
+        
         if (!$insert_post_into_database) {
             
             die("QUERY FAILED " . mysqli_error($con));
             
+        }
+        
+        //to display notification that post created //to display notification that post created
+        if ($insert_post_into_database) {
+                            
+            echo "<h4 class='bg-success text-center'>New Post Added<a href='../post.php?p_id={$last_post_id}'>  View Post</a></h4>";
         }
            
     }
@@ -98,10 +106,14 @@
     </div>
     
     <div class="form-group">
-        <label for="post_status">Post Status</label>
-        <input type="text" class="form-control" name="post_status">
+        <label for="post_status">Post Status</label> <br>  
+        <select class="" name="post_status" id="">
+            <option value="draft">Post Status</option>
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>   
+        </select>  
     </div>
-    
+       
     <div class="form-group">
        <label for="post_image">Post Image</label>
        <input type="file" name="post_image">

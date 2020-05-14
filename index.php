@@ -20,7 +20,6 @@
                     <small></small>
                 </h1>
                 
-                
                 <!-- To allow posts to get their information from the post table in the database -->
                 <?php 
                 
