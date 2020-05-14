@@ -108,6 +108,7 @@
  
  User Registration - Layout out form; create table; create login code; encrypt password; adjust login page after encryption; adjust edit user page after encryption
 
+ PHP and Javascript Confirm Before Delete
  
  
  
