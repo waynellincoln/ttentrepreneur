@@ -110,6 +110,10 @@
 
  PHP and Javascript Confirm Before Delete
  
+ Display posts by author - create author_post page; adjust code on index page; adjust code on author_post page
+ 
+ 
+ 
  
  
  
