@@ -35,7 +35,42 @@
                     
                     $delete_by_bulk = mysqli_query($con, $query);
                     
-                break;        
+                break;   
+                    
+                case 'clone':
+                    
+                    $query = "SELECT *
+                              FROM posts
+                              WHERE post_id = {$post_id_checked} " ;
+                    
+                    $clone_by_bulk = mysqli_query($con, $query);
+                    
+                    while($row = mysqli_fetch_array($clone_by_bulk)) {
+                        
+                        $post_title             = $row['post_title'];
+                        $post_author            = $row['post_author'];
+                        $post_category_id       = $row['post_category_id'];
+                        $post_status            = $row['post_status'];
+                        $post_image             = $row['post_image'];
+                        $post_content           = $row['post_content'];
+                        $post_tags              = $row['post_tags'];
+                        $post_date              = $row['post_date'];
+                    }
+                    
+                    $query = "INSERT INTO posts(post_title, post_author, post_category_id, post_status, post_image, post_content, post_tags, post_date) ";
+                    
+                    $query .= "VALUES('{$post_title}', '{$post_author}', {$post_category_id}, '{$post_status}', '{$post_image}', '{$post_content}', '{$post_tags}', now()) "; 
+                    
+                    $clone_selected_posts = mysqli_query($con, $query);
+                    
+                    if(!$clone_selected_posts) {
+                        
+                        die("Query Failed " . mysqli_error($con)); 
+                        
+                    }
+                    
+                break;       
+                    
                     
             }
             
@@ -56,6 +91,7 @@
            <option value="published">Publish</option>  
            <option value="draft">Draft</option>  
            <option value="delete">Delete</option>    
+           <option value="clone">Clone</option>    
        </select>
    </div>
    
@@ -63,8 +99,7 @@
        <input type="submit" name="submit" class="btn btn-success" value="Apply">
        <a class="btn btn-primary" href="./posts.php?source=add_post">Add New</a>
    </div>
-   
-   
+
    
     <thead>
         <tr><!--selectAllBoxes click on it to make all check boxes true or selected - managed by javascript code-->
@@ -82,6 +117,7 @@
             <th>View</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>Visits</th>
         </tr>
     </thead>
 
@@ -105,6 +141,7 @@
                 $post_tags              = $row['post_tags'];
                 $post_comment_count     = $row['post_comment_count'];
                 $post_date              = $row['post_date'];
+                $post_views_count       = $row['post_views_count'];
 
 
                 echo "<tr>";
@@ -146,7 +183,7 @@
                    echo"<td><a href='../post.php?p_id=$post_id'>View</a></td>"; 
                    echo"<td><a href='posts.php?source=edit_post&edit=$post_id'>Edit</a></td>"; 
                    echo"<td><a onClick=\"javascript: return confirm('Are You Sure You Want to Delete This Message?');\" href='posts.php?delete=$post_id'>Delete</a></td>";
-                   
+                   echo"<td><a href='./posts.php?reset=$post_id'>{$post_views_count}</a></td>";
                    
                 echo "</tr>";
 
@@ -174,11 +211,21 @@
         
     }
 
-
-
-
-
-
-
+?>
+               
+<?php
+    if(isset($_GET['reset'])) {
+        
+        $r_id       = $_GET['reset'];
+        
+        $query      = "UPDATE posts
+                       SET post_views_count = 0 
+                       WHERE post_id = $r_id ";
+        
+        $reset_query = mysqli_query($con, $query);
+        
+        header("Location: posts.php");
+        
+    }                 
 ?>
                 

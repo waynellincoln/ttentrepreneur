@@ -112,6 +112,8 @@
  
  Display posts by author - create author_post page; adjust code on index page; adjust code on author_post page
  
+ Cloning; Visits to each posts; Resetting Visits to Post;
+ 
  
  
  

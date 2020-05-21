@@ -20,6 +20,22 @@
                     <small></small>
                 </h1>
                 
+                <?php
+                    //query to find out how many times post visited
+                    if (isset($_GET['p_id'])) {
+                        
+                        $p_id    = $_GET['p_id'];
+                            
+                
+                    $query = "UPDATE posts
+                              SET post_views_count = post_views_count + 1
+                              WHERE post_id = $p_id";
+                
+                    $check_post_visits = mysqli_query($con, $query);
+                
+                    }
+                ?>
+                
                 
                 <!-- To display single post from  -->
                 <?php 
