@@ -1,6 +1,8 @@
 <?php include "includes/header.php"; ?>
 
     <div id="wrapper">
+        
+<?php users_online(); ?>
 
         <!-- Navigation -->
   <?php include "includes/navigation.php";?>
@@ -18,6 +20,7 @@
                             
                             <small><?php echo $_SESSION['username']; ?></small>
                         </h1>
+                        
                     </div>
                 </div>
                 <!-- /.row -->

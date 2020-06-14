@@ -19,28 +19,31 @@
         $username                       =   mysqli_real_escape_string($con, $username);
         $user_email                     =   mysqli_real_escape_string($con, $user_email);
         $user_password                  =   mysqli_real_escape_string($con, $user_password);
+            
+            
+        $user_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
         
         //managing password - first add cost to randSalt column in the users table
         //managing password - then add 22 chanracters random string to cost
         //now query to check for default values from above
-        $query = "SELECT randSalt
-                  FROM users";
-        
-        $get_randsalt_value = mysqli_query($con, $query);
-        
-        if (!$get_randsalt_value) {
-            
-            die("Query Failed " . mysqli_error($con));
-        }
-        
-        $row = mysqli_fetch_array($get_randsalt_value);
-        
-        //we now have the randSalt default value in a variable    
-         $salt = $row['randSalt'];
-         
-        //encryption of password
-        $user_password = crypt($user_password, $salt);
-            
+//        $query = "SELECT randSalt
+//                  FROM users";
+//        
+//        $get_randsalt_value = mysqli_query($con, $query);
+//        
+//        if (!$get_randsalt_value) {
+//            
+//            die("Query Failed " . mysqli_error($con));
+//        }
+//        
+//        $row = mysqli_fetch_array($get_randsalt_value);
+//        
+//        //we now have the randSalt default value in a variable    
+//         $salt = $row['randSalt'];
+//         
+//        //encryption of password
+//        $user_password = crypt($user_password, $salt);
+//            
         
         $query = "INSERT INTO users(username, user_email, user_password, user_role) ";
         $query .= "VALUES('{$username}', '{$user_email}', '{$user_password}', 'subscriber')";

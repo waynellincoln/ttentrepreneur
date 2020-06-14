@@ -8,7 +8,6 @@
                   FROM users
                   WHERE user_id = $edit_user_id "; 
                   
-        
         $display_user_to_edit = mysqli_query($con, $query);
 
         while ($row = mysqli_fetch_assoc($display_user_to_edit)) {
@@ -36,24 +35,46 @@
         $user_role                  = $_POST['user_role'];
         $user_date                  = date('d-m-y');
         
-        //Query to remove encryption from password
-        $query = "SELECT randSalt
-                  FROM users";
+//        //Query to remove encryption from password
+//        $query = "SELECT randSalt
+//                  FROM users";
+//        
+//        $remove_encryption_query = mysqli_query($con, $query);
+//        
+//        if (!$remove_encryption_query) {
+//            
+//            die("Query Failed " . mysqli_error($con));
+//            
+//        }
+//        
+//        $row    = mysqli_fetch_array($remove_encryption_query); //1 result so no need to use while loop
+//        
+//        $salt   = $row['randSalt'];
         
-        $remove_encryption_query = mysqli_query($con, $query);
-        
-        if (!$remove_encryption_query) {
+        if(!empty($user_password)){
             
-            die("Query Failed " . mysqli_error($con));
+            $query_password = "SELECT user_password FROM users
+                               WHERE user_id = $edit_user_id";
+            
+            $get_user = mysqli_query($con, $query);
+            
+                if (!$get_user) {
+
+                    die("QUERY FAILED " . mysqli_error($con));
+                    
+                }
+            
+            $row = mysqli_fetch_array($get_user);
+            
+            $db_user_password = $row['user_password'];
             
         }
         
-        $row    = mysqli_fetch_array($remove_encryption_query); //1 result so no need to use while loop
-        
-        $salt   = $row['randSalt'];
-        
-        $hashed_password = crypt($user_password, $salt);
-        
+            if($db_user_password != $user_password) {
+                
+                $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
+                
+            }
         
                     $query = "UPDATE users 
                               SET username            = '{$username}',
@@ -109,7 +130,7 @@
     
     <div class="form-group">
         <label for="user_email">Password</label>
-        <input type="password" class="form-control" name="user_password" value="<?php echo $user_password; ?>">
+        <input type="password" class="form-control" name="user_password" value="<?php //echo $user_password; ?>">
     </div>
     
      <div class="form-group">

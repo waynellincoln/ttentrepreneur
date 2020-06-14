@@ -37,5 +37,20 @@ $(document).ready(function(){
     
 });
 
+function loadUsersOnline() {
+    
+    //send get request to functions.php and run function after a response is obtained
+    $.get("functions.php?onlineusers=result", function(data) {
+      
+        $(".usersonline").text(data);
+  
+    });
+          
+setInterval(function(){
+          
+     loadUsersOnline();
+          
+},500); //to check the databse ever soo often
+
 
 

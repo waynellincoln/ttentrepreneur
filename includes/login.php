@@ -39,11 +39,11 @@
         }
         
             //to turn password back to a non-encrypted password
-            $user_password = crypt($user_password, $db_user_password);
+//            $user_password = crypt($user_password, $db_user_password);
         
         //validation starts here    //validation starts here    //validation starts here
         //is username being typed by user the same as the one in the database
-        if ($username === $db_username && $user_password === $db_user_password) {
+        if (password_verify($user_password, $db_user_password)) {
             
             //setting session here
             $_SESSION['username']   = $db_username;    //username from database is assigned a session called username
